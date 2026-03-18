@@ -1,0 +1,150 @@
+{
+  "identity": {
+    "persona": "E1",
+    "tone": "Executive Luxury, Sophisticated, Authority, Trust",
+    "theme_strategy": "The Midnight Executive",
+    "core_principles": [
+      "Fusion over Imitation: Mix High-Finance aesthetics with Cinematic spacing.",
+      "Emotion First: Every interaction must feel heavy, premium, and deliberate.",
+      "Negative Space: Luxury is the abundance of space. Use p-12 where p-4 is expected.",
+      "Dark Mode Default: The application is native dark mode. No toggle needed."
+    ]
+  },
+  "typography": {
+    "headings": {
+      "font_family": "Playfair Display, serif",
+      "url": "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+      "usage": "Use for all H1, H2, H3. Tracking-tight. Weight: 600 or 700.",
+      "className": "font-serif tracking-tight"
+    },
+    "body": {
+      "font_family": "Manrope, sans-serif",
+      "url": "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap",
+      "usage": "Use for p, span, div, inputs. Tracking-normal. Weight: 300 (light) or 400 (regular).",
+      "className": "font-sans"
+    },
+    "mono": {
+      "font_family": "JetBrains Mono, monospace",
+      "url": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap",
+      "usage": "Use for tiny labels, dates, or technical metrics.",
+      "className": "font-mono text-xs uppercase tracking-widest opacity-60"
+    }
+  },
+  "colors": {
+    "background": {
+      "default": "#050505",
+      "paper": "#0A0A0A",
+      "surface": "#121212"
+    },
+    "text": {
+      "primary": "#EDEDED",
+      "secondary": "#A1A1AA",
+      "muted": "#52525B"
+    },
+    "accent": {
+      "primary": "#E2E2E2",
+      "secondary": "#C0A062",
+      "description": "Primary is Platinum/Silver. Secondary is Muted Bronze (use sparingly for active states)."
+    },
+    "border": {
+      "subtle": "rgba(255,255,255,0.08)",
+      "strong": "rgba(255,255,255,0.15)"
+    },
+    "tailwind_config_extension": {
+      "colors": {
+        "bronze": {
+          "500": "#C0A062",
+          "600": "#A88B52"
+        },
+        "platinum": {
+          "500": "#E2E2E2",
+          "900": "#121212"
+        }
+      }
+    }
+  },
+  "layout": {
+    "spacing": {
+      "container_padding": "p-6 md:p-12 lg:p-20",
+      "section_gap": "gap-12 md:gap-24",
+      "component_internal": "p-6 md:p-8"
+    },
+    "grid_strategy": {
+      "marketing": "Use the 'Tetris' grid: grid-cols-12 with col-span-8 (Hero) and col-span-4 (Sidebar).",
+      "dashboard": "Use the 'Dense' grid: grid-cols-4 with gap-4."
+    },
+    "border_radius": "rounded-none (sharp) or rounded-sm (2px) only. NO large rounded corners. This is serious business."
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-white text-black hover:bg-gray-200 rounded-none h-12 px-8 uppercase tracking-widest text-xs font-bold transition-all duration-300",
+      "secondary": "bg-transparent border border-white/20 text-white hover:bg-white/10 rounded-none h-12 px-8 uppercase tracking-widest text-xs",
+      "ghost": "text-white/60 hover:text-white hover:bg-transparent uppercase tracking-widest text-[10px]"
+    },
+    "cards": {
+      "style": "bg-white/5 border border-white/10 backdrop-blur-md rounded-none",
+      "hover": "hover:bg-white/10 hover:border-white/20 transition-all duration-500"
+    },
+    "inputs": {
+      "style": "bg-transparent border-b border-white/20 rounded-none px-0 py-4 focus:border-white focus:ring-0 text-white placeholder:text-white/30 h-auto"
+    },
+    "calendar": {
+      "instructions": "Customize Shadcn calendar. Dark theme. Selected date should be White text on Bronze bg. Today is underlined."
+    },
+    "dialog": {
+      "instructions": "Use for Video Player and Appointment Details. Backdrop blur-xl. Border border-white/10."
+    }
+  },
+  "visual_enhancers": {
+    "glassmorphism": "backdrop-blur-xl bg-black/40 border border-white/10",
+    "gradients": "Subtle, dark gradients only. 'bg-gradient-to-b from-transparent to-black' for bottom fades.",
+    "noise": "Add a fixed noise overlay at 3% opacity over the entire app for filmic texture.",
+    "shadows": "shadow-[0_0_50px_-12px_rgba(255,255,255,0.1)] (Glow effect, not drop shadow)"
+  },
+  "assets": {
+    "hero_images": [
+      "https://images.unsplash.com/photo-1639421959302-0310b98285e0?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "https://images.unsplash.com/photo-1764079833388-d480338ca16b?crop=entropy&cs=srgb&fm=jpg&q=85"
+    ],
+    "meeting_images": [
+      "https://images.unsplash.com/photo-1766802981801-4b4a9a1d8f1c?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "https://images.pexels.com/photos/260689/pexels-photo-260689.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    ],
+    "people_images": [
+      "https://images.unsplash.com/photo-1742119897876-67e9935ac375?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "https://images.pexels.com/photos/4342352/pexels-photo-4342352.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "https://images.pexels.com/photos/34129724/pexels-photo-34129724.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    ],
+    "logo_placeholder": "https://placehold.co/200x50/000000/FFF?text=CONSULT+INC"
+  },
+  "functionality_specs": {
+    "calendar": {
+      "library": "react-day-picker (via shadcn)",
+      "features": "Date selection, Time slot grid (morning/afternoon), Timezone detection mock",
+      "data_testid": "appointment-calendar"
+    },
+    "video_testimonials": {
+      "interaction": "Clicking a card opens a Dialog with the video player.",
+      "layout": "Horizontal scroll or 3-col grid.",
+      "data_testid": "testimonial-video-card"
+    },
+    "case_studies": {
+      "interaction": "Download button triggers PDF download (mock).",
+      "layout": "List view with 'Download' icon on right.",
+      "data_testid": "case-study-item"
+    },
+    "admin": {
+      "layout": "Sidebar navigation (Dashboard, Uploads, Settings). Table view for content.",
+      "upload_ui": "Drag and drop zone (use react-dropzone if available, else standard input type='file' styled as a zone)."
+    }
+  },
+  "universal_guidelines": {
+    "general": [
+      "Avoid 'AI Slop': No generic centered layouts. No purple/teal gradients.",
+      "Transitions: Use 'transition-colors duration-300' or 'transition-transform duration-500 ease-out'. NO 'transition-all'.",
+      "Alignment: Left align text mostly. Center align only for dramatic Hero statements.",
+      "Icons: Use Lucide React (default). Stroke width 1.5px (thin and elegant).",
+      "Testing: ALL interactive elements MUST have data-testid attributes."
+    ]
+  }
+}
