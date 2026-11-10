@@ -25,14 +25,22 @@ mimetypes.add_type('video/quicktime', '.mov')
 mimetypes.add_type('video/mp4', '.mp4')
 mimetypes.add_type('video/x-msvideo', '.avi')
 
-mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ.get('DB_NAME', 'consulting_db')]
+raw_mongo_url = os.environ.get('MONGO_URL', '').strip()
+mongo_url = raw_mongo_url if raw_mongo_url else 'mongodb://localhost:27017'
+
+try:
+    client = AsyncIOMotorClient(mongo_url, serverSelectionTimeoutMS=5000)
+    db = client[os.environ.get('DB_NAME', '').strip() or 'consulting_db']
+except Exception as e:
+    logging.error(f"Failed to initialize MongoDB client: {e}")
+    client = None
+    db = None
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     yield
-    client.close()
+    if client:
+        client.close()
 
 app = FastAPI(lifespan=lifespan)
 api_router = APIRouter(prefix="/api")
@@ -142,11 +150,17 @@ async def create_appointment(appointment: AppointmentCreate):
 
 @api_router.get("/appointments", response_model=List[Appointment])
 async def get_appointments():
-    appointments = await db.appointments.find({}, {"_id": 0}).to_list(1000)
-    for appt in appointments:
-        if isinstance(appt['created_at'], str):
-            appt['created_at'] = datetime.fromisoformat(appt['created_at'])
-    return appointments
+    if db is None:
+        return []
+    try:
+        appointments = await db.appointments.find({}, {"_id": 0}).to_list(1000)
+        for appt in appointments:
+            if isinstance(appt['created_at'], str):
+                appt['created_at'] = datetime.fromisoformat(appt['created_at'])
+        return appointments
+    except Exception as e:
+        logger.warning(f"Failed to fetch appointments: {e}")
+        return []
 
 @api_router.post("/testimonials/upload")
 async def upload_testimonial(
@@ -183,11 +197,17 @@ async def upload_testimonial(
 
 @api_router.get("/testimonials", response_model=List[Testimonial])
 async def get_testimonials():
-    testimonials = await db.testimonials.find({}, {"_id": 0}).to_list(1000)
-    for test in testimonials:
-        if isinstance(test['created_at'], str):
-            test['created_at'] = datetime.fromisoformat(test['created_at'])
-    return testimonials
+    if db is None:
+        return []
+    try:
+        testimonials = await db.testimonials.find({}, {"_id": 0}).to_list(1000)
+        for test in testimonials:
+            if isinstance(test['created_at'], str):
+                test['created_at'] = datetime.fromisoformat(test['created_at'])
+        return testimonials
+    except Exception as e:
+        logger.warning(f"Failed to fetch testimonials: {e}")
+        return []
 
 @api_router.delete("/testimonials/{testimonial_id}")
 async def delete_testimonial(testimonial_id: str):
@@ -263,11 +283,17 @@ async def upload_case_study(
 
 @api_router.get("/case-studies", response_model=List[CaseStudy])
 async def get_case_studies():
-    case_studies = await db.case_studies.find({}, {"_id": 0}).to_list(1000)
-    for cs in case_studies:
-        if isinstance(cs['created_at'], str):
-            cs['created_at'] = datetime.fromisoformat(cs['created_at'])
-    return case_studies
+    if db is None:
+        return []
+    try:
+        case_studies = await db.case_studies.find({}, {"_id": 0}).to_list(1000)
+        for cs in case_studies:
+            if isinstance(cs['created_at'], str):
+                cs['created_at'] = datetime.fromisoformat(cs['created_at'])
+        return case_studies
+    except Exception as e:
+        logger.warning(f"Failed to fetch case studies: {e}")
+        return []
 
 @api_router.delete("/case-studies/{case_study_id}")
 async def delete_case_study(case_study_id: str):
@@ -319,11 +345,17 @@ async def create_article(article: ArticleCreate):
 
 @api_router.get("/articles", response_model=List[Article])
 async def get_articles():
-    articles = await db.articles.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
-    for article in articles:
-        if isinstance(article['created_at'], str):
-            article['created_at'] = datetime.fromisoformat(article['created_at'])
-    return articles
+    if db is None:
+        return []
+    try:
+        articles = await db.articles.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+        for article in articles:
+            if isinstance(article['created_at'], str):
+                article['created_at'] = datetime.fromisoformat(article['created_at'])
+        return articles
+    except Exception as e:
+        logger.warning(f"Failed to fetch articles: {e}")
+        return []
 
 @api_router.delete("/articles/{article_id}")
 async def delete_article(article_id: str):
@@ -396,16 +428,17 @@ async def healthz():
         "timestamp": datetime.now(timezone.utc).isoformat()
     }
 
-cors_origins_env = os.environ.get('CORS_ORIGINS', '*')
-if cors_origins_env == '*':
+cors_origins_env = os.environ.get('CORS_ORIGINS', '*').strip()
+if cors_origins_env == '*' or not cors_origins_env:
     cors_origins = ['*']
 else:
     cors_origins = [o.strip() for o in cors_origins_env.split(',') if o.strip()]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=True,
     allow_origins=cors_origins,
+    allow_origin_regex=r"^https?://.*$",
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
