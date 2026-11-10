@@ -102,4 +102,63 @@
       radial-gradient(ellipse 50% 30% at 15% 80%, rgba(192, 160, 98, 0.05), transparent 60%),
       #070A10;
   }
+
+  .border-beam-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .border-beam-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 25%,
+      rgba(192, 160, 98, 0.8) 50%,
+      rgba(255, 255, 255, 0.9) 55%,
+      rgba(192, 160, 98, 0.8) 60%,
+      transparent 75%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: border-beam-anim 4s linear infinite;
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .border-beam-container:hover::after {
+    opacity: 1;
+  }
+}
+
+@keyframes border-beam-anim {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
 }

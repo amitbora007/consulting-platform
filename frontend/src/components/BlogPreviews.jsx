@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, Clock, BookOpen, X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { motion } from "framer-motion";
 import axios from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -31,14 +32,20 @@ const BlogPreviews = () => {
   };
 
   return (
-    <section id="insights" className="py-24 md:py-32 px-6 md:px-12 lg:px-20 border-t border-white/10 bg-[#070707]">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <section id="insights" className="min-h-screen flex flex-col justify-center py-24 md:py-32 px-6 md:px-12 lg:px-20 border-t border-white/10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6"
+        >
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <span className="w-1.5 h-1.5 bg-bronze-500"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-bronze-400"></span>
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/60">
-                Institutional Research
+                Institutional Research // Chapter 05
               </p>
             </div>
             <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
@@ -49,26 +56,36 @@ const BlogPreviews = () => {
           <p className="font-sans font-light text-white/60 max-w-sm text-sm md:text-base leading-relaxed">
             Proprietary research and analysis on capital efficiency, board dynamics, and industry disruptions.
           </p>
-        </div>
+        </motion.div>
 
         {loading ? (
           <div className="py-20 text-center font-mono text-xs uppercase tracking-widest text-white/40">
             Accessing Research Archives...
           </div>
         ) : articles.length === 0 ? (
-          <div className="bg-[#0A0A0A] border border-white/10 p-16 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-16 text-center rounded-2xl shadow-xl max-w-2xl mx-auto"
+          >
             <BookOpen className="w-10 h-10 text-white/20 mx-auto mb-4" strokeWidth={1} />
             <p className="text-white/50 font-sans font-light">
               No executive briefings currently published.
             </p>
-          </div>
+          </motion.div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {articles.map((article) => (
-              <article
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 perspective-1000">
+            {articles.map((article, idx) => (
+              <motion.article
                 key={article.id}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: idx * 0.12, ease: "easeOut" }}
+                whileHover={{ y: -8 }}
                 onClick={() => setActiveArticle(article)}
-                className="group bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 overflow-hidden hover:border-bronze-500/40 hover:-translate-y-1.5 hover:shadow-[0_25px_50px_-15px_rgba(192,160,98,0.25)] transition-all duration-500 flex flex-col cursor-pointer rounded-xl shadow-xl relative"
+                className="group bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 overflow-hidden hover:border-bronze-500/40 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.5)] hover:shadow-[0_25px_50px_-15px_rgba(192,160,98,0.25)] transition-all duration-500 flex flex-col cursor-pointer relative"
                 data-testid="blog-preview-card"
               >
                 {/* Top specular rim */}
@@ -117,10 +134,10 @@ const BlogPreviews = () => {
 
                   <div className="pt-4 border-t border-white/10 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-white/50 group-hover:text-white transition-colors duration-300">
                     <span>Read Executive Briefing</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300 text-bronze-400" strokeWidth={1.75} />
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-300 text-bronze-400 font-bold" strokeWidth={1.75} />
                   </div>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         )}

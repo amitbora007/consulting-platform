@@ -1,82 +1,109 @@
-import { ArrowRight, ShieldCheck, TrendingUp, BarChart3 } from "lucide-react";
+import { ArrowRight, ShieldCheck, TrendingUp, BarChart3, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 const Hero = ({ onBookAppointment }) => {
   return (
-    <section className="relative min-h-screen flex items-center pt-28 pb-16 md:py-32 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-28 pb-16 md:py-32 overflow-hidden">
       {/* Background with cinematic fade */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <img
           src="https://images.unsplash.com/photo-1639421959302-0310b98285e0?crop=entropy&cs=srgb&fm=jpg&q=85"
           alt="Corporate skyline"
-          className="w-full h-full object-cover opacity-15"
+          className="w-full h-full object-cover opacity-15 scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-[#050505]/95 to-[#050505]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#070A10]/70 via-[#070A10]/90 to-[#070A10]" />
       </div>
 
-      <div className="relative z-10 w-full px-6 md:px-12 lg:px-20">
+      <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 my-auto">
         <div className="max-w-7xl mx-auto">
           {/* Asymmetric Tetris 12-Column Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-16">
-            {/* 8-Column Editorial Core */}
+            {/* 8-Column Editorial Core with Kinetic Typography */}
             <div className="lg:col-span-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 mb-8">
-                <span className="w-1.5 h-1.5 bg-bronze-500 animate-pulse"></span>
-                <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-white/70">
-                  Strategic Excellence Since 2010
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md mb-8 shadow-inner"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-bronze-400 animate-pulse"></span>
+                <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-white/80">
+                  Quantitative Enterprise Strategy
                 </span>
-              </div>
+              </motion.div>
 
-              <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight leading-[0.95]">
+              <motion.h1
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight leading-[0.95]"
+              >
                 Transform Your Enterprise with
-                <span className="block text-bronze-500 font-normal italic mt-2">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-bronze-300 via-bronze-400 to-amber-200 font-normal italic mt-2 drop-shadow-[0_0_35px_rgba(192,160,98,0.25)]">
                   Quantitative Precision.
                 </span>
-              </h1>
+              </motion.h1>
 
-              <p className="text-base sm:text-lg md:text-xl text-white/70 font-sans font-light mb-10 leading-relaxed max-w-2xl">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+                className="text-base sm:text-lg md:text-xl text-white/70 font-sans font-light mb-10 leading-relaxed max-w-2xl"
+              >
                 We partner with C-suite leaders and enterprise boards to unlock measurable valuation growth through data-driven strategy, operational turnarounds, and ruthless execution.
-              </p>
+              </motion.p>
 
-              <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
-                <Button
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
+                className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center"
+              >
+                <MagneticButton
                   onClick={onBookAppointment}
-                  className="bg-white text-black hover:bg-gray-200 rounded-none h-13 px-8 uppercase tracking-widest text-xs font-bold transition-colors duration-300 shadow-[0_0_50px_-12px_rgba(255,255,255,0.2)]"
+                  className="bg-white text-black hover:bg-gray-100 rounded-lg h-14 px-8 uppercase tracking-widest text-xs font-bold shadow-[0_0_40px_-10px_rgba(255,255,255,0.4)]"
                   data-testid="hero-book-consultation-btn"
                 >
                   Book Consultation
                   <ArrowRight className="ml-2 w-4 h-4" strokeWidth={2} />
-                </Button>
+                </MagneticButton>
 
                 <Button
                   onClick={() => document.getElementById("case-studies")?.scrollIntoView({ behavior: "smooth" })}
-                  className="bg-transparent border border-white/20 text-white hover:bg-white/10 rounded-none h-13 px-8 uppercase tracking-widest text-xs font-medium transition-colors duration-300"
+                  className="bg-white/[0.04] border border-white/20 text-white hover:bg-white/10 rounded-lg h-14 px-8 uppercase tracking-widest text-xs font-medium transition-all duration-300 backdrop-blur-md"
                   data-testid="hero-view-work-btn"
                 >
                   View Case Studies
                 </Button>
-              </div>
+              </motion.div>
             </div>
 
-            {/* 4-Column Executive Key Metrics Card with 3D Tilt */}
-            <div className="lg:col-span-4 perspective-1000">
-              <div className="relative group rounded-xl overflow-hidden cursor-default transition-all duration-500 hover:shadow-[0_25px_50px_-12px_rgba(192,160,98,0.25)]">
+            {/* 4-Column Executive Key Metrics Card with 3D Tilt & Continuous Floating Levitation */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
+              className="lg:col-span-4 perspective-1000 animate-float-slow"
+            >
+              <div className="relative group rounded-2xl overflow-hidden cursor-default transition-all duration-500 hover:shadow-[0_25px_60px_-15px_rgba(192,160,98,0.3)] border-beam-container">
                 {/* 3D Glass Shell */}
-                <div className="bg-[#0C1017]/90 border border-white/15 backdrop-blur-2xl p-8 rounded-xl relative overflow-hidden transition-all duration-300 group-hover:border-bronze-500/50">
+                <div className="bg-[#0C1017]/90 border border-white/15 backdrop-blur-2xl p-8 rounded-2xl relative overflow-hidden transition-all duration-300 group-hover:border-bronze-500/50">
                   {/* Top Specular Rim */}
-                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
+                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
 
                   {/* Ambient Light Cone */}
-                  <div className="absolute -top-12 -right-12 w-32 h-32 bg-bronze-500/15 rounded-full blur-2xl pointer-events-none group-hover:bg-bronze-500/30 transition-all duration-500" />
+                  <div className="absolute -top-12 -right-12 w-36 h-36 bg-bronze-500/20 rounded-full blur-3xl pointer-events-none group-hover:bg-bronze-500/35 transition-all duration-500" />
 
                   <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/10 relative z-10">
                     <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-bronze-500"></span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-bronze-400"></span>
                       <span className="font-mono text-[10px] uppercase tracking-widest text-white/60">
                         Mandate Performance
                       </span>
                     </div>
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/15 flex items-center justify-center">
+                    <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/15 flex items-center justify-center shadow-lg">
                       <ShieldCheck className="w-4 h-4 text-bronze-400" strokeWidth={1.75} />
                     </div>
                   </div>
@@ -92,7 +119,7 @@ const Hero = ({ onBookAppointment }) => {
                     </div>
 
                     <div className="pt-4 border-t border-white/5">
-                      <div className="font-serif text-3xl md:text-4xl font-bold text-bronze-400 tracking-tight drop-shadow-md">
+                      <div className="font-serif text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-bronze-300 to-amber-200 tracking-tight drop-shadow-md">
                         34.2%
                       </div>
                       <div className="font-mono text-xs uppercase tracking-wider text-white/50 mt-1">
@@ -123,7 +150,7 @@ const Hero = ({ onBookAppointment }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Institutional Trust Coordinates */}

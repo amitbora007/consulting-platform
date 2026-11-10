@@ -1,4 +1,5 @@
 import { Target, TrendingUp, Users, Zap, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -37,14 +38,20 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 md:py-32 px-6 md:px-12 lg:px-20 border-t border-white/10 bg-[#050505]">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
+    <section id="services" className="min-h-screen flex flex-col justify-center py-24 md:py-32 px-6 md:px-12 lg:px-20 border-t border-white/10 relative">
+      <div className="max-w-7xl mx-auto w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8"
+        >
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <span className="w-1.5 h-1.5 bg-bronze-500"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-bronze-400"></span>
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/60">
-                Institutional Capabilities
+                Institutional Capabilities // Chapter 02
               </p>
             </div>
             <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
@@ -54,30 +61,34 @@ const Services = () => {
           <p className="font-sans font-light text-white/60 max-w-md text-sm md:text-base leading-relaxed">
             Every mandate is governed by strict quantitative thresholds. We do not deliver theoretical decks; we execute measurable financial outcomes.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <div
+              <motion.div
                 key={index}
-                className="group relative bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-8 md:p-12 rounded-xl shadow-2xl relative overflow-hidden flex flex-col justify-between transition-all duration-500 hover:border-bronze-500/40 hover:-translate-y-1.5 hover:shadow-[0_25px_50px_-15px_rgba(192,160,98,0.25)]"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+                className="group relative bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-8 md:p-12 rounded-2xl shadow-2xl relative overflow-hidden flex flex-col justify-between transition-all duration-500 hover:border-bronze-500/50 hover:-translate-y-2 hover:shadow-[0_25px_50px_-15px_rgba(192,160,98,0.3)] border-beam-container"
                 data-testid={`service-card-${index}`}
               >
                 {/* Top specular highlight rim */}
-                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
+                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
 
                 {/* Subtle ambient light blur */}
-                <div className="absolute -top-12 -right-12 w-28 h-28 bg-bronze-500/10 rounded-full blur-2xl pointer-events-none group-hover:bg-bronze-500/20 transition-all duration-500" />
+                <div className="absolute -top-12 -right-12 w-32 h-32 bg-bronze-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-bronze-500/25 transition-all duration-500" />
 
                 <div className="relative z-10">
                   <div className="flex items-start justify-between mb-8">
                     {/* 3D Elevated Icon Pedestal */}
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/15 flex items-center justify-center group-hover:scale-110 group-hover:border-bronze-500/50 group-hover:shadow-[0_0_20px_rgba(192,160,98,0.3)] transition-all duration-300">
+                    <div className="w-13 h-13 rounded-xl bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/15 p-3 flex items-center justify-center group-hover:scale-110 group-hover:border-bronze-500/50 group-hover:shadow-[0_0_20px_rgba(192,160,98,0.3)] transition-all duration-300">
                       <Icon className="w-6 h-6 text-bronze-400 group-hover:text-bronze-300 transition-colors duration-200" strokeWidth={1.75} />
                     </div>
-                    <span className="font-mono text-xs uppercase tracking-widest text-white/30 group-hover:text-bronze-400 transition-colors duration-300">
+                    <span className="font-mono text-xs uppercase tracking-widest text-white/40 group-hover:text-bronze-400 transition-colors duration-300">
                       {service.index} // PRACTICE
                     </span>
                   </div>
@@ -106,7 +117,7 @@ const Services = () => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

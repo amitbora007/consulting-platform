@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Play, Quote, X, Building, UserCheck } from "lucide-react";
+import { Play, Quote, X, Building, UserCheck, ShieldCheck } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { motion } from "framer-motion";
 import axios from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -23,34 +24,55 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="py-24 md:py-32 px-6 md:px-12 lg:px-20 border-t border-white/10 bg-[#070707]">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-16 md:mb-20">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="w-1.5 h-1.5 bg-bronze-500"></span>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/60">
-              Executive Testimonials
-            </p>
+    <section id="testimonials" className="min-h-screen flex flex-col justify-center py-24 md:py-32 px-6 md:px-12 lg:px-20 border-t border-white/10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8"
+        >
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-bronze-400"></span>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/60">
+                Boardroom Transcripts // Chapter 03
+              </p>
+            </div>
+            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
+              Client Perspectives on Value Created.
+            </h2>
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
-            Client Perspectives on Value Created.
-          </h2>
-        </div>
+          <p className="font-sans font-light text-white/60 max-w-md text-sm md:text-base leading-relaxed">
+            Direct briefings and verified testimonials from chief executives, board chairs, and investment partners.
+          </p>
+        </motion.div>
 
         {testimonials.length === 0 ? (
-          <div className="bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-16 text-center rounded-xl shadow-xl">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-16 text-center rounded-2xl shadow-xl max-w-2xl mx-auto"
+          >
             <Quote className="w-10 h-10 text-white/20 mx-auto mb-4" strokeWidth={1} />
             <p className="text-white/50 font-sans font-light">
-              Video testimonials are currently undergoing compliance review and will be published shortly.
+              Executive video recordings are currently undergoing compliance verification and will be published shortly.
             </p>
-          </div>
+          </motion.div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {testimonials.map((testimonial) => (
-              <div
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 perspective-1000">
+            {testimonials.map((testimonial, idx) => (
+              <motion.div
                 key={testimonial.id}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: idx * 0.12, ease: "easeOut" }}
+                whileHover={{ y: -8 }}
                 onClick={() => setSelectedVideo(testimonial)}
-                className="group relative bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 overflow-hidden cursor-pointer hover:border-bronze-500/40 hover:-translate-y-1.5 hover:shadow-[0_25px_50px_-15px_rgba(192,160,98,0.25)] transition-all duration-500 rounded-xl flex flex-col shadow-xl"
+                className="group relative bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 hover:border-bronze-500/40 rounded-2xl overflow-hidden cursor-pointer shadow-[0_15px_35px_rgba(0,0,0,0.5)] hover:shadow-[0_25px_50px_-15px_rgba(192,160,98,0.25)] transition-all duration-500 flex flex-col"
                 data-testid="testimonial-video-card"
               >
                 {/* Top specular rim */}
@@ -96,13 +118,13 @@ const Testimonials = () => {
                   </div>
 
                   <div className="pt-4 border-t border-white/10 flex items-center justify-between text-white/40 font-mono text-[10px] uppercase tracking-wider">
-                    <span>Watch Briefing</span>
-                    <span className="group-hover:translate-x-1 transition-transform duration-300 text-bronze-400">
+                    <span className="group-hover:text-white/70 transition-colors duration-300">Watch Briefing</span>
+                    <span className="group-hover:translate-x-1.5 transition-transform duration-300 text-bronze-400 font-bold">
                       &rarr;
                     </span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}
