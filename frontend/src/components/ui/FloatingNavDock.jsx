@@ -73,19 +73,23 @@ const FloatingNavDock = ({ onBookAppointment }) => {
                     onClick={() => scrollToChapter(ch.id)}
                     className={`relative px-3.5 py-1.5 rounded-full text-[11px] font-mono uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 ${
                       isActive
-                        ? "text-black font-semibold"
-                        : "text-white/60 hover:text-white hover:bg-white/5"
+                        ? "text-[#06080E] font-bold"
+                        : "text-white/65 hover:text-white hover:bg-white/10"
                     }`}
                   >
                     {isActive && (
                       <motion.div
                         layoutId="activeChapterPill"
-                        className="absolute inset-0 bg-gradient-to-r from-bronze-400 to-bronze-500 rounded-full shadow-[0_0_20px_rgba(192,160,98,0.5)]"
-                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                        className="absolute inset-0 bg-gradient-to-r from-[#DFC285] via-[#D4B26F] to-[#C0A062] rounded-full shadow-[0_0_22px_rgba(192,160,98,0.55)]"
+                        transition={{ type: "spring", stiffness: 380, damping: 28 }}
                       />
                     )}
-                    <span className="relative z-10 opacity-75">{ch.num}</span>
-                    <span className="relative z-10">{ch.label}</span>
+                    <span className={`relative z-10 ${isActive ? "text-[#06080E] font-bold opacity-80" : "opacity-60"}`}>
+                      {ch.num}
+                    </span>
+                    <span className={`relative z-10 ${isActive ? "text-[#06080E] font-bold" : ""}`}>
+                      {ch.label}
+                    </span>
                   </button>
                 );
               })}

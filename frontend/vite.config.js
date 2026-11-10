@@ -41,7 +41,9 @@ export default defineConfig(({ mode }) => {
       },
     },
     define: {
-      'process.env.REACT_APP_BACKEND_URL': JSON.stringify(env.REACT_APP_BACKEND_URL || 'http://localhost:8001'),
+      'process.env.REACT_APP_BACKEND_URL': JSON.stringify(
+        env.REACT_APP_BACKEND_URL || env.VITE_BACKEND_URL || (mode === 'production' ? '' : 'http://localhost:8001')
+      ),
       'process.env': JSON.stringify(env),
     },
   };

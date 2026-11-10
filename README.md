@@ -235,14 +235,23 @@ npm install
 
 - Confirm REACT_APP_BACKEND_URL in frontend/.env
 
+## Deployment on Render
+
+The platform is fully prepared for one-click deployment on [Render.com](https://render.com) using the included `render.yaml` Blueprint or manual dashboard setup.
+
+- **Render Blueprint**: [`render.yaml`](./render.yaml) provisions the Python FastAPI Web Service (with 10GB persistent disk for uploads) and React/Vite Static Site.
+- **Upload Persistence**: Video testimonials and case study PDFs are routed to a Render Persistent Disk via the `UPLOAD_DIR` environment variable, ensuring data survives redeployments and restarts.
+- **Detailed Instructions**: See [`RENDER_DEPLOYMENT.md`](./RENDER_DEPLOYMENT.md) for step-by-step setup, MongoDB Atlas integration, and post-deployment checklist.
+
 ## Production Notes
 
-- Build frontend with npm run build in frontend.
-- Run FastAPI with multiple workers, for example:
+- Build frontend with `npm run build` in `frontend/`.
+- Run FastAPI in production:
 
 ```bash
 cd backend
 uvicorn server:app --host 0.0.0.0 --port 8001 --workers 4
 ```
 
-- Set production-grade MONGO_URL, DB_NAME, and CORS_ORIGINS.
+- Set production-grade `MONGO_URL`, `DB_NAME`, `CORS_ORIGINS`, and `UPLOAD_DIR`.
+

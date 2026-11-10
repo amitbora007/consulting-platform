@@ -6,8 +6,11 @@ module.exports = {
     extend: {
       colors: {
         bronze: {
+          300: '#DFC285',
+          400: '#D4B26F',
           500: '#C0A062',
           600: '#A88B52',
+          700: '#876D38',
         },
         platinum: {
           500: '#E2E2E2',

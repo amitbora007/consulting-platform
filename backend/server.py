@@ -25,9 +25,9 @@ mimetypes.add_type('video/quicktime', '.mov')
 mimetypes.add_type('video/mp4', '.mp4')
 mimetypes.add_type('video/x-msvideo', '.avi')
 
-mongo_url = os.environ['MONGO_URL']
+mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
 client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+db = client[os.environ.get('DB_NAME', 'consulting_db')]
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -37,12 +37,30 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 api_router = APIRouter(prefix="/api")
 
-UPLOAD_DIR = ROOT_DIR / "uploads"
+# Upload directory: supports Render Persistent Disk via UPLOAD_DIR env var (e.g. /var/data/uploads)
+UPLOAD_DIR = Path(os.environ.get("UPLOAD_DIR", ROOT_DIR / "uploads"))
 VIDEO_DIR = UPLOAD_DIR / "videos"
 PDF_DIR = UPLOAD_DIR / "pdfs"
 
 for directory in [VIDEO_DIR, PDF_DIR]:
     directory.mkdir(parents=True, exist_ok=True)
+
+# Auto-seed bundled media into persistent disk if newly mounted
+bundled_uploads = ROOT_DIR / "uploads"
+if UPLOAD_DIR.resolve() != bundled_uploads.resolve() and bundled_uploads.exists():
+    import shutil
+    for sub in ["videos", "pdfs"]:
+        src_sub = bundled_uploads / sub
+        dest_sub = UPLOAD_DIR / sub
+        if src_sub.exists():
+            for item in src_sub.glob("*"):
+                if item.is_file() and item.name != ".gitkeep":
+                    target = dest_sub / item.name
+                    if not target.exists():
+                        try:
+                            shutil.copy2(item, target)
+                        except Exception:
+                            pass
 
 class AppointmentCreate(BaseModel):
     name: str
@@ -145,8 +163,8 @@ async def upload_testimonial(
     file_path = VIDEO_DIR / file_name
     
     async with aiofiles.open(file_path, 'wb') as f:
-        content = await video.read()
-        await f.write(content)
+        while chunk := await video.read(1024 * 1024):
+            await f.write(chunk)
     
     video_url = f"/api/videos/{file_name}"
     
@@ -225,8 +243,8 @@ async def upload_case_study(
     file_path = PDF_DIR / file_name
     
     async with aiofiles.open(file_path, 'wb') as f:
-        content = await pdf.read()
-        await f.write(content)
+        while chunk := await pdf.read(1024 * 1024):
+            await f.write(chunk)
     
     pdf_url = f"/api/pdfs/{file_name}"
     
@@ -368,10 +386,26 @@ async def serve_pdf(filename: str):
 
 app.include_router(api_router)
 
+# Production health check endpoint for Render
+@app.get("/healthz")
+@app.get("/")
+async def healthz():
+    return {
+        "status": "healthy",
+        "service": "corporate-consulting-platform-backend",
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
+
+cors_origins_env = os.environ.get('CORS_ORIGINS', '*')
+if cors_origins_env == '*':
+    cors_origins = ['*']
+else:
+    cors_origins = [o.strip() for o in cors_origins_env.split(',') if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+    allow_origins=cors_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )

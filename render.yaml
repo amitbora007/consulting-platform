@@ -1,0 +1,57 @@
+# ----------------------------------------------------------------------
+# Render Infrastructure Blueprint (render.yaml)
+# Corporate Consulting Platform
+# Full-Stack Deployment: FastAPI Backend + React/Vite Frontend
+# ----------------------------------------------------------------------
+
+services:
+  # --------------------------------------------------------------------
+  # 1. Backend Web Service (FastAPI + Python 3.11+)
+  # --------------------------------------------------------------------
+  - type: web
+    name: corporate-consulting-backend
+    runtime: python
+    region: oregon # Alternatives: frankfurt, ohio, singapore
+    plan: starter # Starter plan or higher is required for persistent disk
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
+    # Persistent Disk ensures uploaded videos and PDFs survive redeploys & restarts
+    disk:
+      name: uploads-data
+      mountPath: /var/data
+      sizeGB: 10
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: MONGO_URL
+        sync: false # Set your MongoDB Atlas URI in the Render Dashboard
+      - key: DB_NAME
+        value: consulting_db
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: UPLOAD_DIR
+        value: /var/data/uploads
+
+  # --------------------------------------------------------------------
+  # 2. Frontend Static Site (React 19 + Vite 6 + Framer Motion)
+  # --------------------------------------------------------------------
+  - type: static
+    name: corporate-consulting-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      # SPA rewrite rule so client-side routes (/admin, /) route to index.html
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: REACT_APP_BACKEND_URL
+        fromService:
+          type: web
+          name: corporate-consulting-backend
+          property: host
