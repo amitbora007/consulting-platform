@@ -28,12 +28,12 @@ services:
         value: "*"
 
   # --------------------------------------------------------------------
-  # 2. Frontend Static Site (React 19 + Vite 6 + Framer Motion) - Free Tier
+  # 2. Frontend Static Site (React 19 + Vite 6 + Framer Motion)
+  # Static sites on Render are CDN-hosted, always free, and take no 'plan' field
   # --------------------------------------------------------------------
   - type: web
     name: consulting-frontend
     runtime: static
-    plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
