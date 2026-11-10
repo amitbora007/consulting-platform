@@ -75,8 +75,13 @@ corporate-consulting-platform/
 │   │   ├── App.js
 │   │   └── index.css
 │   └── .env
+├── docs/
+│   ├── DESIGN.md
+│   ├── PRODUCT.md
+│   ├── QUICKSTART.md
+│   └── RENDER_DEPLOYMENT.md
 ├── design_guidelines.json
-├── QUICKSTART.md
+├── render.yaml
 └── README.md
 ```
 
@@ -241,7 +246,7 @@ The platform is fully prepared for one-click deployment on [Render.com](https://
 
 - **Render Blueprint**: [`render.yaml`](./render.yaml) provisions the Python FastAPI Web Service (with 10GB persistent disk for uploads) and React/Vite Static Site.
 - **Upload Persistence**: Video testimonials and case study PDFs are routed to a Render Persistent Disk via the `UPLOAD_DIR` environment variable, ensuring data survives redeployments and restarts.
-- **Detailed Instructions**: See [`RENDER_DEPLOYMENT.md`](./RENDER_DEPLOYMENT.md) for step-by-step setup, MongoDB Atlas integration, and post-deployment checklist.
+- **Detailed Instructions**: See [`docs/RENDER_DEPLOYMENT.md`](./docs/RENDER_DEPLOYMENT.md) for step-by-step setup, MongoDB Atlas integration, and post-deployment checklist.
 
 ## Production Notes
 
