@@ -1,0 +1,23 @@
+# Environment files
+.env
+.env.local
+
+# Dependencies
+node_modules/
+backend/venv/
+
+# Build outputs
+frontend/dist/
+frontend/build/
+
+# Uploaded large media files
+backend/uploads/*
+!backend/uploads/.gitkeep
+!backend/uploads/pdfs/.gitkeep
+!backend/uploads/videos/.gitkeep
+
+# Editor & System files
+.vscode/
+.DS_Store
+*.log
+__pycache__/

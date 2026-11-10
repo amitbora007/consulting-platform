@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-10T11:46:00Z",
+  "title": "Design System: Consult Inc.",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Polished Platinum",
+        "canonical": "#E2E2E2",
+        "tonalRamp": ["#1C1C1E", "#3A3A3C", "#5A5A5E", "#7C7C82", "#A2A2A8", "#C4C4CA", "#E2E2E2", "#F2F2F7"]
+      },
+      "secondary": {
+        "role": "secondary",
+        "displayName": "Burnished Bronze",
+        "canonical": "#C0A062",
+        "tonalRamp": ["#2C2110", "#4A3818", "#6D5224", "#916F33", "#A88B52", "#C0A062", "#D8BD85", "#F0DEC0"]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Deep Midnight",
+        "canonical": "#050505",
+        "tonalRamp": ["#050505", "#0F0F10", "#18181A", "#242427", "#323236", "#45454B", "#62626A", "#85858F"]
+      },
+      "neutral-paper": {
+        "role": "neutral",
+        "displayName": "Obsidian Paper",
+        "canonical": "#0A0A0A",
+        "tonalRamp": ["#080808", "#121212", "#1C1C1C", "#2B2B2B", "#3D3D3D", "#545454", "#737373", "#999999"]
+      },
+      "neutral-surface": {
+        "role": "neutral",
+        "displayName": "Elevated Surface",
+        "canonical": "#121212",
+        "tonalRamp": ["#0E0E0E", "#171717", "#222222", "#313131", "#444444", "#5C5C5C", "#7B7B7B", "#A0A0A0"]
+      },
+      "neutral-text": {
+        "role": "neutral",
+        "displayName": "Soft Platinum",
+        "canonical": "#EDEDED",
+        "tonalRamp": ["#282828", "#474747", "#6B6B6B", "#919191", "#B8B8B8", "#D9D9D9", "#EDEDED", "#FAFAFA"]
+      },
+      "neutral-muted": {
+        "role": "neutral",
+        "displayName": "Zinc Subtext",
+        "canonical": "#A1A1AA",
+        "tonalRamp": ["#18181B", "#27272A", "#3F3F46", "#52525B", "#71717A", "#A1A1AA", "#D4D4D8", "#F4F4F5"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display Hero",
+        "purpose": "Primary Hero headline statements with high editorial gravitas."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Major section headings and case study titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card titles, modal headings, and service categories."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "High-legibility reading text, descriptions, and value propositions."
+      },
+      "label": {
+        "displayName": "Technical Label",
+        "purpose": "Uppercase monospace timestamps, category pills, metrics, and tags."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ambient-glow",
+        "value": "0 0 50px -12px rgba(255, 255, 255, 0.1)",
+        "purpose": "Soft luminous ambient aura on hover states and active indicators."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-standard",
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "purpose": "Standard easing for state transitions."
+      },
+      {
+        "name": "transition-colors-standard",
+        "value": "color 300ms ease, background-color 300ms ease, border-color 300ms ease",
+        "purpose": "Standard interactive color and border transition."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "High-contrast action button for primary conversion pathways (e.g. Book Consultation).",
+      "html": "<button class=\"ds-btn-primary\">BOOK CONSULTATION <svg class=\"ds-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 32px; background: #FFFFFF; color: #000000; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; border: none; border-radius: 0; cursor: pointer; transition: background-color 300ms ease, color 300ms ease; } .ds-btn-primary:hover { background: #E2E2E2; } .ds-btn-primary:focus-visible { outline: 2px solid #E2E2E2; outline-offset: 2px; } .ds-icon { width: 16px; height: 16px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Hairline-bordered button for secondary actions such as viewing case studies.",
+      "html": "<button class=\"ds-btn-secondary\">VIEW OUR WORK</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 32px; background: transparent; color: #FFFFFF; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 0; cursor: pointer; transition: background-color 300ms ease, border-color 300ms ease; } .ds-btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.4); } .ds-btn-secondary:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Minimal text action with zero padding for subtle navigation or card links.",
+      "html": "<button class=\"ds-btn-ghost\">EXPLORE ARCHIVE &rarr;</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; background: transparent; color: rgba(255, 255, 255, 0.6); font-family: 'Manrope', sans-serif; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; border: none; padding: 0; cursor: pointer; transition: color 300ms ease; } .ds-btn-ghost:hover { color: #FFFFFF; } .ds-btn-ghost:focus-visible { outline: 1px solid #FFFFFF; outline-offset: 2px; }"
+    },
+    {
+      "name": "Executive Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Glassmorphic container with hairline border and dark ambient glow on hover.",
+      "html": "<div class=\"ds-card\"><span class=\"ds-tag\">METRIC 01</span><h3 class=\"ds-card-title\">Revenue Acceleration</h3><p class=\"ds-card-desc\">Quantitative optimization models unlocking 34% margin improvement across global business units.</p></div>",
+      "css": ".ds-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 32px; border-radius: 0; color: #EDEDED; transition: background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease; } .ds-card:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 0 50px -12px rgba(255, 255, 255, 0.1); } .ds-tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255, 255, 255, 0.6); margin-bottom: 12px; } .ds-card-title { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; color: #FFFFFF; margin: 0 0 12px 0; letter-spacing: -0.01em; } .ds-card-desc { font-family: 'Manrope', sans-serif; font-size: 14px; font-weight: 300; line-height: 1.6; color: rgba(255, 255, 255, 0.7); margin: 0; }"
+    },
+    {
+      "name": "Architectural Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Minimal hairline underline input with subtle placeholder.",
+      "html": "<div class=\"ds-input-group\"><label class=\"ds-label\">FULL NAME *</label><input type=\"text\" class=\"ds-input\" placeholder=\"e.g. Eleanor Vance\" /></div>",
+      "css": ".ds-input-group { display: flex; flex-direction: column; width: 100%; max-width: 400px; } .ds-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255, 255, 255, 0.6); margin-bottom: 8px; } .ds-input { background: transparent; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.2); border-radius: 0; padding: 14px 0; font-family: 'Manrope', sans-serif; font-size: 15px; color: #FFFFFF; width: 100%; box-sizing: border-box; transition: border-color 300ms ease; } .ds-input:focus { outline: none; border-bottom-color: #FFFFFF; } .ds-input::placeholder { color: rgba(255, 255, 255, 0.3); font-weight: 300; }"
+    },
+    {
+      "name": "Time Slot Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Interactive time slot selector showing default state and active Bronze state.",
+      "html": "<div class=\"ds-slot-row\"><button class=\"ds-slot ds-slot-active\">10:00 AM</button><button class=\"ds-slot\">11:00 AM</button><button class=\"ds-slot\">02:00 PM</button></div>",
+      "css": ".ds-slot-row { display: flex; gap: 8px; } .ds-slot { padding: 8px 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; background: transparent; color: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 0; cursor: pointer; transition: all 300ms ease; } .ds-slot:hover { border-color: rgba(255, 255, 255, 0.3); color: #FFFFFF; } .ds-slot-active { background: #C0A062; color: #000000; border-color: #C0A062; font-weight: 600; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Midnight Executive",
+    "overview": "The Consult Inc. design system synthesizes high-finance institutional authority, cinematic dark minimalism, and architectural rigor. Built specifically for C-suite decision-makers and board-level executives, every interaction is engineered to feel deliberate, heavy, and composed. The interface operates as a digital extension of an executive boardroom: austere obsidian backgrounds, razor-sharp hairlines, generous negative space, and luminous metallic accents.\n\nRather than relying on sterile corporate templates or casual SaaS aesthetics, the design language treats whitespace as a luxury material. Surfaces remain disciplined and calm, avoiding clutter, noisy banners, or gratuitous color bursts. The visual cadence alternates between commanding editorial serif statements and dense, high-precision monospace data points.",
+    "keyCharacteristics": [
+      "Monochrome Foundation: Native deep midnight canvas (#050505) with deliberate grayscale tonal layering.",
+      "Precious Accent Rarity: Burnished Bronze (#C0A062) is strictly rationed for active calendar slots and verified indicators.",
+      "Architectural Geometry: Predominantly 0px corner radiuses with razor-sharp planar precision.",
+      "Filmic Physicality: Continuous 3% fixed SVG noise layer over the viewport providing tangible physical grain.",
+      "Typographic Polarity: Playfair Display for authoritative editorial headlines contrasted against JetBrains Mono for clinical operational metrics."
+    ],
+    "rules": [
+      {
+        "name": "The Bronze Restraint Rule",
+        "body": "Burnished Bronze is reserved strictly for active states, selected calendar dates, and high-value indicators (≤5% visual presence; its rarity preserves impact and luxury).",
+        "section": "colors"
+      },
+      {
+        "name": "The Native Dark Rule",
+        "body": "The application operates natively in dark mode without light-mode switching; luxury is defined by controlled luminance on deep obsidian backgrounds.",
+        "section": "colors"
+      },
+      {
+        "name": "The Monospace Provenance Rule",
+        "body": "All metrics, dates, categories, and administrative sub-labels must render in JetBrains Mono uppercase with wide tracking (0.15em) to impart institutional data rigor.",
+        "section": "typography"
+      },
+      {
+        "name": "The Editorial Heading Rule",
+        "body": "All major headings (H1–H3) must utilize Playfair Display with tight letter-spacing; sans-serif is strictly forbidden for top-level titles.",
+        "section": "typography"
+      },
+      {
+        "name": "The Asymmetric Tetris Rule",
+        "body": "Marketing and showcase hero sections favor 12-column asymmetric grids (8-column statement, 4-column interactive unit) over generic centered card stacks.",
+        "section": "layout"
+      },
+      {
+        "name": "The Abundance Spacing Rule",
+        "body": "Spacing favors generous breathing room; where standard SaaS layouts deploy 16px padding, executive luxury employs 48px to 80px.",
+        "section": "layout"
+      },
+      {
+        "name": "The No-Drop-Shadow Rule",
+        "body": "Heavy, murky drop shadows are prohibited; depth is achieved exclusively through translucent glass layering, hairline borders, and subtle luminous ambient glow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Filmic Texture Rule",
+        "body": "A fixed 3% opacity fractal noise overlay runs continuously across the viewport to add cinematic physical grain to dark digital surfaces.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Razor Form Rule",
+        "body": "Structural containers, buttons, cards, dialogs, and inputs adhere strictly to 0px border radius (sharp rectangular geometry).",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do use Playfair Display for all H1, H2, and H3 titles with tight letter-spacing.",
+      "Do format technical metrics, dates, and category pills in uppercase JetBrains Mono with wide tracking (tracking-widest).",
+      "Do reserve Burnished Bronze (#C0A062) strictly for active states, selected dates, and rare high-value signals.",
+      "Do maintain generous negative space, favoring p-12 to p-20 on key sections.",
+      "Do keep primary buttons and interactive containers razor-sharp with rounded-none.",
+      "Do use targeted CSS transitions (transition-colors duration-300 or transition-transform duration-500 ease-out)."
+    ],
+    "donts": [
+      "Don't introduce rounded corners (>4px) on cards, inputs, dialogs, or buttons.",
+      "Don't use multi-color gradient fills (e.g., purple-to-blue or cyan-to-violet 'AI-slop' aesthetics).",
+      "Don't use heavy black drop shadows; depth must come from tonal layering and hairline borders.",
+      "Don't use transition-all; always specify individual transitioning properties.",
+      "Don't center-align narrative paragraphs or body copy.",
+      "Don't add a light-mode toggle; the design system is native dark mode by definition."
+    ]
+  }
+}

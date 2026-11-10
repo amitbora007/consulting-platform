@@ -54,17 +54,12 @@ uvicorn server:app --host 0.0.0.0 --port 8001 --reload
 cd frontend
 
 # Install dependencies
-yarn install
-# OR
 npm install
 
 # Create .env file (if not exists)
 echo "REACT_APP_BACKEND_URL=http://localhost:8001" > .env
-echo "WDS_SOCKET_PORT=3000" >> .env
 
-# Start frontend
-yarn start
-# OR
+# Start frontend (powered by Vite)
 npm start
 ```
 

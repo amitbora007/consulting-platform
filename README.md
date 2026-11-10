@@ -27,7 +27,7 @@ A professional full-stack consulting service platform with a premium dark visual
 - Radix UI primitives + shadcn-style components
 - Axios
 - Sonner for toast notifications
-- CRACO for build/start overrides
+- Vite for high-performance builds and zero-vulnerability ESM dev server
 
 ### Backend
 - FastAPI
@@ -128,10 +128,7 @@ brew services start mongodb-community
 ```bash
 cd ../frontend
 
-# Choose one package manager
 npm install
-# or
-yarn install
 ```
 
 Create frontend .env if it does not exist:
@@ -139,8 +136,6 @@ Create frontend .env if it does not exist:
 ```bash
 cat > .env << 'EOF'
 REACT_APP_BACKEND_URL=http://localhost:8001
-WDS_SOCKET_PORT=3000
-ENABLE_HEALTH_CHECK=false
 EOF
 ```
 
@@ -159,8 +154,6 @@ uvicorn server:app --host 0.0.0.0 --port 8001 --reload
 ```bash
 cd frontend
 npm start
-# or
-yarn start
 ```
 
 ## Local URLs
