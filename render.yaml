@@ -9,15 +9,16 @@ services:
   # 1. Backend Web Service (FastAPI + Python 3.11+)
   # --------------------------------------------------------------------
   - type: web
-    name: corporate-consulting-backend
+    name: consulting-backend
     runtime: python
     region: oregon # Alternatives: frankfurt, ohio, singapore
-    plan: starter # Starter plan or higher is required for persistent disk
+    plan: starter # Set to 'free' if deploying without persistent disk
     rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /healthz
     # Persistent Disk ensures uploaded videos and PDFs survive redeploys & restarts
+    # (Note: Disks require Starter plan or above. Comment out disk block for Free tier)
     disk:
       name: uploads-data
       mountPath: /var/data
@@ -36,12 +37,14 @@ services:
 
   # --------------------------------------------------------------------
   # 2. Frontend Static Site (React 19 + Vite 6 + Framer Motion)
+  # In Render Blueprints, static sites use: type: web + runtime: static
   # --------------------------------------------------------------------
-  - type: static
-    name: corporate-consulting-frontend
+  - type: web
+    name: consulting-frontend
+    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
-    staticPublishPath: dist
+    staticPublishPath: ./dist
     routes:
       # SPA rewrite rule so client-side routes (/admin, /) route to index.html
       - type: rewrite
@@ -51,7 +54,4 @@ services:
       - key: NODE_VERSION
         value: 20.18.0
       - key: REACT_APP_BACKEND_URL
-        fromService:
-          type: web
-          name: corporate-consulting-backend
-          property: host
+        value: https://consulting-backend.onrender.com
