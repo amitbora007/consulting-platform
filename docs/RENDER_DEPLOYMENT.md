@@ -52,29 +52,29 @@ The backend in [`backend/server.py`](file:///home/amit.bora/Downloads/ai/corpora
 3. **Automatic Seed Migration**:
    If an empty disk is attached on first boot, the backend automatically copies bundled sample files into the persistent disk.
 
-> [!IMPORTANT]
-> **Free Tier vs Paid Tier Consideration**:
-> - **With Persistent Disk ($7/mo Starter + $0.25/GB disk)**: 100% persistent local SSD storage. Uploaded files never disappear.
-> - **Free Tier ($0/mo)**: Render's Free tier does not support persistent disks. Files will save to the container during normal operation, but will reset when the free container spins down after 15 minutes of inactivity. For zero-cost long-term production storage, you can either upgrade to a Starter service with Disk, or connect AWS S3 / Cloudflare R2 / Cloudinary.
+> [!NOTE]
+> **100% Free Tier ($0/mo, No Card Required)**:
+> The default [`render.yaml`](../render.yaml) is configured for Render's **Free Tier** (`plan: free`).
+> Uploaded videos and PDFs are stored in local container storage (`backend/uploads/`), allowing standard uploads and playback during active use without requiring any payment method or credit card on Render.
 
 ---
 
 ## 3. Deployment Method 1: 1-Click Blueprint (`render.yaml`) [Recommended]
 
-The repository includes a ready-to-use [`render.yaml`](file:///home/amit.bora/Downloads/ai/corporate-consulting-platform/render.yaml) blueprint specification that automatically provisions both the Backend Web Service (with persistent disk) and the Frontend Static Site.
+The repository includes a ready-to-use [`render.yaml`](../render.yaml) blueprint specification that automatically provisions both the Backend Web Service and the Frontend Static Site on Render's **Free Tier** with 0 payment setup.
 
 ### Steps:
 1. **Push your code to GitHub or GitLab**.
 2. Log in to [dashboard.render.com](https://dashboard.render.com/).
 3. In the top navigation bar, click **New +** and select **Blueprint**.
 4. Connect your Git repository.
-5. Render will automatically detect [`render.yaml`](file:///home/amit.bora/Downloads/ai/corporate-consulting-platform/render.yaml).
+5. Render will automatically detect [`render.yaml`](../render.yaml).
 6. Fill in the required secret environment variable:
    - `MONGO_URL`: Your MongoDB Atlas connection string (see Section 5 below).
 7. Click **Apply**.
 8. Render will provision:
-   - `corporate-consulting-backend` (with 10GB persistent disk mounted at `/var/data`)
-   - `corporate-consulting-frontend` (with automatic SPA rewrite rules and backend URL linked)
+   - `consulting-backend` (FastAPI Web Service on Free plan)
+   - `consulting-frontend` (React Static Site on Free plan with SPA routing)
 
 ---
 

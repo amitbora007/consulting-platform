@@ -1,28 +1,22 @@
 # ----------------------------------------------------------------------
 # Render Infrastructure Blueprint (render.yaml)
-# Corporate Consulting Platform
+# Corporate Consulting Platform (100% Free Tier Deployment)
 # Full-Stack Deployment: FastAPI Backend + React/Vite Frontend
 # ----------------------------------------------------------------------
 
 services:
   # --------------------------------------------------------------------
-  # 1. Backend Web Service (FastAPI + Python 3.11+)
+  # 1. Backend Web Service (FastAPI + Python 3.11+) - Free Tier
   # --------------------------------------------------------------------
   - type: web
     name: consulting-backend
     runtime: python
     region: oregon # Alternatives: frankfurt, ohio, singapore
-    plan: starter # Set to 'free' if deploying without persistent disk
+    plan: free
     rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /healthz
-    # Persistent Disk ensures uploaded videos and PDFs survive redeploys & restarts
-    # (Note: Disks require Starter plan or above. Comment out disk block for Free tier)
-    disk:
-      name: uploads-data
-      mountPath: /var/data
-      sizeGB: 10
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
@@ -32,16 +26,14 @@ services:
         value: consulting_db
       - key: CORS_ORIGINS
         value: "*"
-      - key: UPLOAD_DIR
-        value: /var/data/uploads
 
   # --------------------------------------------------------------------
-  # 2. Frontend Static Site (React 19 + Vite 6 + Framer Motion)
-  # In Render Blueprints, static sites use: type: web + runtime: static
+  # 2. Frontend Static Site (React 19 + Vite 6 + Framer Motion) - Free Tier
   # --------------------------------------------------------------------
   - type: web
     name: consulting-frontend
     runtime: static
+    plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
