@@ -99,7 +99,7 @@ const CaseStudiesManager = ({ onUpdate }) => {
   return (
     <div className="space-y-8">
       {/* Upload Station */}
-      <div className="bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-6 md:p-10 rounded-xl shadow-2xl relative overflow-hidden">
+      <div className="bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-4 sm:p-6 md:p-10 rounded-xl shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
         <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
           <FileText className="w-5 h-5 text-bronze-500" strokeWidth={1.5} />
@@ -230,10 +230,10 @@ const CaseStudiesManager = ({ onUpdate }) => {
                   </p>
                 </div>
 
-                <div className="flex items-center gap-3 pt-4 lg:pt-0 border-t lg:border-t-0 border-white/5 flex-shrink-0">
+                <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3 pt-4 lg:pt-0 border-t lg:border-t-0 border-white/5 flex-shrink-0">
                   <Button
                     onClick={() => setEditingCase(cs)}
-                    className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-none h-10 px-5 uppercase tracking-widest text-[10px] font-mono"
+                    className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-lg h-10 px-4 sm:px-5 uppercase tracking-widest text-[10px] font-mono"
                   >
                     <Edit className="w-3.5 h-3.5 mr-1.5" strokeWidth={1.5} />
                     <span>Edit</span>
@@ -241,7 +241,7 @@ const CaseStudiesManager = ({ onUpdate }) => {
                   <Button
                     onClick={() => setDeleteId(cs.id)}
                     variant="destructive"
-                    className="bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/30 rounded-none h-10 px-5 uppercase tracking-widest text-[10px] font-mono"
+                    className="bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/30 rounded-lg h-10 px-4 sm:px-5 uppercase tracking-widest text-[10px] font-mono"
                   >
                     <Trash2 className="w-3.5 h-3.5 mr-1.5" strokeWidth={1.5} />
                     <span>Delete</span>
@@ -255,7 +255,7 @@ const CaseStudiesManager = ({ onUpdate }) => {
 
       {/* Edit Case Dialog */}
       <Dialog open={!!editingCase} onOpenChange={() => setEditingCase(null)}>
-        <DialogContent className="max-w-2xl bg-[#0A0A0A] border border-white/10 p-8 max-h-[90vh] overflow-y-auto rounded-none shadow-2xl">
+        <DialogContent className="w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-2.5rem)] max-w-2xl bg-[#0A0A0A] border border-white/10 p-5 sm:p-8 max-h-[calc(100dvh-2rem)] overflow-y-auto rounded-xl shadow-2xl">
           <DialogHeader>
             <DialogTitle className="text-white font-serif text-2xl font-bold tracking-tight">
               Edit Case Study Details
@@ -325,7 +325,7 @@ const CaseStudiesManager = ({ onUpdate }) => {
 
       {/* Delete Confirmation Dialog */}
       <Dialog open={!!deleteId} onOpenChange={() => setDeleteId(null)}>
-        <DialogContent className="max-w-md bg-[#0A0A0A] border border-white/10 p-8 rounded-none shadow-2xl">
+        <DialogContent className="w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-2.5rem)] max-w-md bg-[#0A0A0A] border border-white/10 p-5 sm:p-8 rounded-xl shadow-2xl">
           <DialogHeader>
             <DialogTitle className="text-white font-serif text-2xl font-bold">
               Permanently Remove Case Study?

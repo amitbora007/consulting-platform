@@ -17,8 +17,12 @@ const InteractiveConstellation = () => {
     if (!ctx) return;
 
     let animationFrameId;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.scale(dpr, dpr);
 
     // Mouse coordinates (normalized to canvas space)
     const mouse = {
@@ -49,8 +53,13 @@ const InteractiveConstellation = () => {
     }
 
     const handleResize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.resetTransform?.();
+      ctx.scale(dpr, dpr);
     };
 
     const handlePointerMove = (e) => {

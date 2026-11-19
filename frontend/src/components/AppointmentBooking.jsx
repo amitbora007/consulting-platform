@@ -189,7 +189,7 @@ const AppointmentBooking = ({ onClose }) => {
                     key={time}
                     type="button"
                     onClick={() => setSelectedTime(time)}
-                    className={`py-2 px-1 text-[11px] font-mono uppercase tracking-wider border rounded-lg transition-all duration-200 text-center ${
+                    className={`py-2 px-0.5 sm:px-1 text-[10px] sm:text-[11px] font-mono uppercase tracking-tight sm:tracking-wider border rounded-lg transition-all duration-200 text-center min-h-[40px] flex items-center justify-center ${
                       isSelected
                         ? "bg-gradient-to-r from-[#DFC285] via-[#D4B26F] to-[#C0A062] text-[#06080E] border-transparent font-bold shadow-[0_0_15px_rgba(192,160,98,0.4)] scale-[1.02]"
                         : "bg-white/[0.03] text-white/70 border-white/10 hover:border-bronze-500/40 hover:text-white hover:bg-white/[0.07]"

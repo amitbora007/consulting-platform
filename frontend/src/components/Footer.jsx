@@ -107,16 +107,16 @@ const Footer = ({ onBookAppointment }) => {
         </div>
 
         {/* Legal & Provenance */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <p className="font-mono text-xs text-white/40">
             © 2026 Consult Inc. All rights reserved. Confidential client communications.
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2">
             {["Confidentiality Charter", "Terms of Engagement", "Regulatory Disclosures"].map((link) => (
               <a
                 key={link}
                 href="#"
-                className="font-mono text-xs text-white/40 hover:text-white/70 transition-colors duration-300"
+                className="font-mono text-xs text-white/40 hover:text-white/70 transition-colors duration-300 py-1"
               >
                 {link}
               </a>

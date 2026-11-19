@@ -41,7 +41,7 @@ const Hero = ({ onBookAppointment }) => {
                 className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 sm:mb-8 tracking-tight leading-[1.0] sm:leading-[0.95]"
               >
                 Transform Your Enterprise with
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-bronze-300 via-bronze-400 to-amber-200 font-normal italic mt-2 drop-shadow-[0_0_35px_rgba(192,160,98,0.25)]">
+                <span className="block text-bronze-400 font-normal italic mt-2 drop-shadow-[0_0_35px_rgba(192,160,98,0.25)]">
                   Quantitative Precision.
                 </span>
               </motion.h1>
@@ -89,7 +89,7 @@ const Hero = ({ onBookAppointment }) => {
             >
               <div className="relative group rounded-2xl overflow-hidden cursor-default transition-all duration-500 hover:shadow-[0_25px_60px_-15px_rgba(192,160,98,0.3)] border-beam-container">
                 {/* 3D Glass Shell */}
-                <div className="bg-[#0C1017]/90 border border-white/15 backdrop-blur-2xl p-6 sm:p-8 rounded-2xl relative overflow-hidden transition-all duration-300 group-hover:border-bronze-500/50">
+                <div className="bg-[#0C1017]/90 border border-white/15 backdrop-blur-2xl p-5 sm:p-7 md:p-8 rounded-2xl relative overflow-hidden transition-all duration-300 group-hover:border-bronze-500/50">
                   {/* Top Specular Rim */}
                   <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
 
@@ -119,7 +119,7 @@ const Hero = ({ onBookAppointment }) => {
                     </div>
 
                     <div className="pt-4 border-t border-white/5">
-                      <div className="font-serif text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-bronze-300 to-amber-200 tracking-tight drop-shadow-md">
+                      <div className="font-serif text-3xl md:text-4xl font-bold text-bronze-400 tracking-tight drop-shadow-md">
                         34.2%
                       </div>
                       <div className="font-mono text-xs uppercase tracking-wider text-white/50 mt-1">
@@ -154,7 +154,7 @@ const Hero = ({ onBookAppointment }) => {
           </div>
 
           {/* Institutional Trust Coordinates */}
-          <div className="pt-8 sm:pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          <div className="pt-8 sm:pt-10 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <div>
               <span className="block font-mono text-[10px] uppercase tracking-widest text-white/40 mb-1">
                 Headquarters

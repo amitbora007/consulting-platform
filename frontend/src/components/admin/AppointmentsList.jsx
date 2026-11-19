@@ -39,7 +39,7 @@ const AppointmentsList = ({ onUpdate }) => {
   });
 
   return (
-    <div className="bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-6 md:p-10 rounded-xl shadow-2xl relative overflow-hidden">
+    <div className="bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-4 sm:p-6 md:p-10 rounded-xl shadow-2xl relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
       {/* Header and Filter */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-white/10">
@@ -55,24 +55,24 @@ const AppointmentsList = ({ onUpdate }) => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="relative w-full md:w-64">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+          <div className="relative w-full sm:w-64">
             <Search className="w-4 h-4 text-white/40 absolute left-3 top-1/2 -translate-y-1/2" />
             <Input
               type="text"
               placeholder="Search appointments..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="bg-white/5 border border-white/10 rounded-none pl-9 pr-3 py-2 text-xs text-white placeholder:text-white/30 h-10 w-full focus-visible:border-white focus-visible:ring-0"
+              className="bg-white/5 border border-white/10 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder:text-white/30 h-10 w-full focus-visible:border-white focus-visible:ring-0"
             />
           </div>
           <Button
             onClick={fetchAppointments}
-            className="bg-transparent border border-white/20 text-white hover:bg-white/10 rounded-none h-10 px-4 uppercase tracking-widest text-[10px] font-mono flex items-center gap-1.5"
+            className="bg-transparent border border-white/20 text-white hover:bg-white/10 rounded-lg h-10 px-4 uppercase tracking-widest text-[10px] font-mono flex items-center justify-center gap-1.5 flex-shrink-0"
             title="Refresh list"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`} />
-            <span className="hidden sm:inline">Refresh</span>
+            <span>Refresh</span>
           </Button>
         </div>
       </div>

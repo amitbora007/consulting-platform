@@ -44,6 +44,7 @@ const MagneticButton = ({
     <motion.button
       ref={ref}
       style={{ x: springX, y: springY }}
+      whileTap={{ scale: 0.97 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}

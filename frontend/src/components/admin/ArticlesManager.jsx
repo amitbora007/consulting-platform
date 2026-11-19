@@ -99,7 +99,7 @@ const ArticlesManager = ({ onUpdate }) => {
   return (
     <div className="space-y-8">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-6 md:p-8 rounded-xl shadow-2xl relative overflow-hidden">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
         <div>
           <div className="flex items-center gap-2.5 mb-1">
@@ -115,7 +115,7 @@ const ArticlesManager = ({ onUpdate }) => {
 
         <Button
           onClick={() => setShowCreateForm(true)}
-          className="bg-white text-black hover:bg-gray-200 rounded-none h-11 px-6 uppercase tracking-widest text-xs font-bold transition-colors duration-200 flex items-center gap-2"
+          className="bg-white text-black hover:bg-gray-200 rounded-lg h-11 px-6 uppercase tracking-widest text-xs font-bold transition-colors duration-200 flex items-center justify-center gap-2 w-full sm:w-auto"
         >
           <Plus className="w-4 h-4" strokeWidth={2} />
           <span>New Briefing</span>
@@ -123,7 +123,7 @@ const ArticlesManager = ({ onUpdate }) => {
       </div>
 
       {/* Library Grid */}
-      <div className="bg-[#0A0A0A] border border-white/10 p-6 md:p-10 rounded-none">
+      <div className="bg-[#0A0A0A] border border-white/10 p-4 sm:p-6 md:p-10 rounded-xl">
         <h3 className="font-serif text-xl md:text-2xl font-bold text-white mb-6 pb-4 border-b border-white/10 flex items-center justify-between">
           <span>Published Articles ({articles.length})</span>
           <span className="font-mono text-xs uppercase tracking-widest text-white/40">Editorial Catalog</span>
@@ -142,11 +142,11 @@ const ArticlesManager = ({ onUpdate }) => {
             {articles.map((article) => (
               <div
                 key={article.id}
-                className="bg-[#0F0F0F] border border-white/10 p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6 hover:border-white/25 hover:bg-[#141414] transition-colors duration-200 rounded-none"
+                className="bg-[#0F0F0F] border border-white/10 p-5 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6 hover:border-white/25 hover:bg-[#141414] transition-colors duration-200 rounded-lg"
               >
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2.5 mb-2">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-black font-semibold bg-bronze-500 px-2.5 py-0.5">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-black font-semibold bg-bronze-500 px-2.5 py-0.5 rounded-sm">
                       {article.category}
                     </span>
                     <span className="font-mono text-[10px] uppercase tracking-wider text-white/40">
@@ -166,10 +166,10 @@ const ArticlesManager = ({ onUpdate }) => {
                   </p>
                 </div>
 
-                <div className="flex items-center gap-3 pt-4 lg:pt-0 border-t lg:border-t-0 border-white/5 flex-shrink-0">
+                <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3 pt-4 lg:pt-0 border-t lg:border-t-0 border-white/5 flex-shrink-0">
                   <Button
                     onClick={() => setEditingArticle(article)}
-                    className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-none h-10 px-5 uppercase tracking-widest text-[10px] font-mono"
+                    className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-lg h-10 px-4 sm:px-5 uppercase tracking-widest text-[10px] font-mono"
                   >
                     <Edit className="w-3.5 h-3.5 mr-1.5" strokeWidth={1.5} />
                     <span>Edit</span>
@@ -177,7 +177,7 @@ const ArticlesManager = ({ onUpdate }) => {
                   <Button
                     onClick={() => setDeleteId(article.id)}
                     variant="destructive"
-                    className="bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/30 rounded-none h-10 px-5 uppercase tracking-widest text-[10px] font-mono"
+                    className="bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/30 rounded-lg h-10 px-4 sm:px-5 uppercase tracking-widest text-[10px] font-mono"
                   >
                     <Trash2 className="w-3.5 h-3.5 mr-1.5" strokeWidth={1.5} />
                     <span>Delete</span>
@@ -191,7 +191,7 @@ const ArticlesManager = ({ onUpdate }) => {
 
       {/* Create Article Dialog */}
       <Dialog open={showCreateForm} onOpenChange={setShowCreateForm}>
-        <DialogContent className="max-w-3xl bg-[#0A0A0A] border border-white/10 p-8 md:p-10 max-h-[90vh] overflow-y-auto rounded-none shadow-2xl">
+        <DialogContent className="w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-2.5rem)] max-w-3xl bg-[#0A0A0A] border border-white/10 p-5 sm:p-8 md:p-10 max-h-[calc(100dvh-2rem)] overflow-y-auto rounded-xl shadow-2xl">
           <DialogHeader>
             <DialogTitle className="text-white font-serif text-2xl font-bold tracking-tight">
               Author New Research Briefing
@@ -306,7 +306,7 @@ const ArticlesManager = ({ onUpdate }) => {
 
       {/* Edit Article Dialog */}
       <Dialog open={!!editingArticle} onOpenChange={() => setEditingArticle(null)}>
-        <DialogContent className="max-w-3xl bg-[#0A0A0A] border border-white/10 p-8 md:p-10 max-h-[90vh] overflow-y-auto rounded-none shadow-2xl">
+        <DialogContent className="w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-2.5rem)] max-w-3xl bg-[#0A0A0A] border border-white/10 p-5 sm:p-8 md:p-10 max-h-[calc(100dvh-2rem)] overflow-y-auto rounded-xl shadow-2xl">
           <DialogHeader>
             <DialogTitle className="text-white font-serif text-2xl font-bold tracking-tight">
               Edit Research Briefing
@@ -416,7 +416,7 @@ const ArticlesManager = ({ onUpdate }) => {
 
       {/* Delete Confirmation Dialog */}
       <Dialog open={!!deleteId} onOpenChange={() => setDeleteId(null)}>
-        <DialogContent className="max-w-md bg-[#0A0A0A] border border-white/10 p-8 rounded-none shadow-2xl">
+        <DialogContent className="w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-2.5rem)] max-w-md bg-[#0A0A0A] border border-white/10 p-5 sm:p-8 rounded-xl shadow-2xl">
           <DialogHeader>
             <DialogTitle className="text-white font-serif text-2xl font-bold">
               Permanently Remove Briefing?
