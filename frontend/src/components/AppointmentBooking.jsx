@@ -86,13 +86,13 @@ const AppointmentBooking = ({ onClose }) => {
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none z-20" />
 
       {/* Top Header Bar */}
-      <div className="flex items-center justify-between px-5 md:px-8 py-4 border-b border-white/10 bg-[#090D14]/90 relative z-10">
-        <div className="flex items-center gap-2.5">
-          <div className="w-6 h-6 rounded-md bg-bronze-500/20 border border-bronze-500/30 flex items-center justify-center">
+      <div className="flex items-center justify-between px-3.5 sm:px-6 md:px-8 py-3 sm:py-4 border-b border-white/10 bg-[#090D14]/90 relative z-10 gap-2">
+        <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+          <div className="w-6 h-6 rounded-md bg-bronze-500/20 border border-bronze-500/30 flex items-center justify-center flex-shrink-0">
             <Shield className="w-3.5 h-3.5 text-bronze-400" strokeWidth={1.75} />
           </div>
-          <div>
-            <span className="font-mono text-xs uppercase tracking-[0.15em] text-white/90 font-semibold block leading-tight">
+          <div className="min-w-0">
+            <span className="font-mono text-[11px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.15em] text-white/90 font-semibold block leading-tight truncate">
               Executive Consultation Intake
             </span>
             <span className="font-mono text-[9px] uppercase tracking-widest text-white/40 hidden sm:block">
@@ -101,30 +101,32 @@ const AppointmentBooking = ({ onClose }) => {
           </div>
         </div>
 
-        {/* Mobile/Tablet Step Pills */}
-        <div className="flex lg:hidden items-center gap-1.5 bg-white/5 border border-white/10 p-1 rounded-lg">
-          <button
-            type="button"
-            onClick={() => setMobileStep(1)}
-            className={`px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider rounded-md transition-all ${
-              mobileStep === 1
-                ? "bg-bronze-400 text-black font-bold shadow-sm"
-                : "text-white/60 hover:text-white"
-            }`}
-          >
-            01 Date
-          </button>
-          <button
-            type="button"
-            onClick={() => setMobileStep(2)}
-            className={`px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider rounded-md transition-all ${
-              mobileStep === 2
-                ? "bg-bronze-400 text-black font-bold shadow-sm"
-                : "text-white/60 hover:text-white"
-            }`}
-          >
-            02 Details
-          </button>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          {/* Mobile/Tablet Step Pills */}
+          <div className="flex lg:hidden items-center gap-1 bg-white/5 border border-white/10 p-0.5 rounded-lg">
+            <button
+              type="button"
+              onClick={() => setMobileStep(1)}
+              className={`px-2 py-1 text-[9px] sm:text-[10px] font-mono uppercase tracking-wider rounded-md transition-all ${
+                mobileStep === 1
+                  ? "bg-bronze-400 text-black font-bold shadow-sm"
+                  : "text-white/60 hover:text-white"
+              }`}
+            >
+              01 Date
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileStep(2)}
+              className={`px-2 py-1 text-[9px] sm:text-[10px] font-mono uppercase tracking-wider rounded-md transition-all ${
+                mobileStep === 2
+                  ? "bg-bronze-400 text-black font-bold shadow-sm"
+                  : "text-white/60 hover:text-white"
+              }`}
+            >
+              02 Details
+            </button>
+          </div>
         </div>
       </div>
 
@@ -132,15 +134,15 @@ const AppointmentBooking = ({ onClose }) => {
       <div className="grid grid-cols-1 lg:grid-cols-12 relative z-10 divide-y lg:divide-y-0 lg:divide-x divide-white/10">
 
         {/* Left Column: Calendar & Time Selection (always visible on desktop, step 1 on mobile) */}
-        <div className={`lg:col-span-6 p-5 sm:p-6 md:p-8 bg-[#070A10]/90 ${mobileStep === 1 ? "block" : "hidden lg:block"}`}>
-          <div className="mb-5">
+        <div className={`lg:col-span-6 p-4 sm:p-6 md:p-8 bg-[#070A10]/90 ${mobileStep === 1 ? "block" : "hidden lg:block"}`}>
+          <div className="mb-4 sm:mb-5">
             <div className="flex items-center gap-2 mb-1">
               <span className="w-1.5 h-1.5 rounded-full bg-bronze-400" />
               <span className="font-mono text-[10px] uppercase tracking-widest text-bronze-400">
                 Phase 01 // Availability
               </span>
             </div>
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
+            <h2 className="font-serif text-lg sm:text-2xl font-bold text-white tracking-tight">
               Select Session Date
             </h2>
             <p className="text-white/50 font-sans font-light text-xs mt-1">
@@ -216,9 +218,9 @@ const AppointmentBooking = ({ onClose }) => {
         </div>
 
         {/* Right Column: Executive Credentials Form (always visible on desktop, step 2 on mobile) */}
-        <div className={`lg:col-span-6 p-5 sm:p-6 md:p-8 flex flex-col justify-between bg-[#0C1017]/90 ${mobileStep === 2 ? "block" : "hidden lg:flex"}`}>
+        <div className={`lg:col-span-6 p-4 sm:p-6 md:p-8 flex flex-col justify-between bg-[#0C1017]/90 ${mobileStep === 2 ? "block" : "hidden lg:flex"}`}>
           <div>
-            <div className="mb-5">
+            <div className="mb-4 sm:mb-5">
               <div className="flex items-center justify-between mb-1">
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-bronze-400" />
@@ -237,12 +239,12 @@ const AppointmentBooking = ({ onClose }) => {
                 </button>
               </div>
 
-              <h2 className="font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
+              <h2 className="font-serif text-lg sm:text-2xl font-bold text-white tracking-tight">
                 Executive Credentials
               </h2>
 
               {/* Selected Session Summary Badge */}
-              <div className="mt-3 p-3 bg-white/[0.03] border border-white/10 rounded-xl flex items-center gap-3">
+              <div className="mt-3 p-2.5 sm:p-3 bg-white/[0.03] border border-white/10 rounded-xl flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-bronze-500/15 border border-bronze-500/30 flex items-center justify-center flex-shrink-0">
                   <CalendarCheck className="w-4 h-4 text-bronze-400" />
                 </div>
@@ -257,7 +259,7 @@ const AppointmentBooking = ({ onClose }) => {
               </div>
             </div>
 
-            <form id="appointment-form" onSubmit={handleSubmit} className="space-y-4">
+            <form id="appointment-form" onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
               <div>
                 <label className="block font-mono text-[10px] uppercase tracking-widest text-white/60 mb-1.5">
                   Full Name & Corporate Title *
@@ -266,7 +268,7 @@ const AppointmentBooking = ({ onClose }) => {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="bg-white/[0.03] border border-white/15 rounded-lg px-3.5 py-2.5 text-white placeholder:text-white/25 focus-visible:border-bronze-400 focus-visible:ring-1 focus-visible:ring-bronze-400 text-sm font-sans"
+                  className="bg-white/[0.03] border border-white/15 rounded-lg px-3.5 py-2.5 text-white placeholder:text-white/25 focus-visible:border-bronze-400 focus-visible:ring-1 focus-visible:ring-bronze-400 text-base sm:text-sm font-sans"
                   placeholder="e.g. Marcus Vance, Chief Operating Officer"
                   data-testid="appointment-name-input"
                 />
@@ -281,7 +283,7 @@ const AppointmentBooking = ({ onClose }) => {
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="bg-white/[0.03] border border-white/15 rounded-lg px-3.5 py-2.5 text-white placeholder:text-white/25 focus-visible:border-bronze-400 focus-visible:ring-1 focus-visible:ring-bronze-400 text-sm font-sans"
+                  className="bg-white/[0.03] border border-white/15 rounded-lg px-3.5 py-2.5 text-white placeholder:text-white/25 focus-visible:border-bronze-400 focus-visible:ring-1 focus-visible:ring-bronze-400 text-base sm:text-sm font-sans"
                   placeholder="m.vance@enterprise.com"
                 />
               </div>
@@ -295,7 +297,7 @@ const AppointmentBooking = ({ onClose }) => {
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="bg-white/[0.03] border border-white/15 rounded-lg px-3.5 py-2.5 text-white placeholder:text-white/25 focus-visible:border-bronze-400 focus-visible:ring-1 focus-visible:ring-bronze-400 text-sm font-sans"
+                  className="bg-white/[0.03] border border-white/15 rounded-lg px-3.5 py-2.5 text-white placeholder:text-white/25 focus-visible:border-bronze-400 focus-visible:ring-1 focus-visible:ring-bronze-400 text-base sm:text-sm font-sans"
                   placeholder="+1 (212) 555-0199"
                 />
               </div>
@@ -307,7 +309,7 @@ const AppointmentBooking = ({ onClose }) => {
                 <Textarea
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="bg-white/[0.03] border border-white/15 rounded-lg px-3.5 py-2 text-white placeholder:text-white/25 focus-visible:border-bronze-400 focus-visible:ring-1 focus-visible:ring-bronze-400 text-xs font-sans resize-none h-16"
+                  className="bg-white/[0.03] border border-white/15 rounded-lg px-3.5 py-2 text-white placeholder:text-white/25 focus-visible:border-bronze-400 focus-visible:ring-1 focus-visible:ring-bronze-400 text-base sm:text-xs font-sans resize-none h-16"
                   placeholder="Brief summary of challenges, capital allocation scope, or timeline..."
                 />
               </div>

@@ -16,20 +16,20 @@ const Hero = ({ onBookAppointment }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-[#070A10]/70 via-[#070A10]/90 to-[#070A10]" />
       </div>
 
-      <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 my-auto">
+      <div className="relative z-10 w-full px-5 sm:px-8 md:px-12 lg:px-20 my-auto">
         <div className="max-w-7xl mx-auto">
           {/* Asymmetric Tetris 12-Column Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center mb-12 sm:mb-16">
             {/* 8-Column Editorial Core with Kinetic Typography */}
             <div className="lg:col-span-8">
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md mb-8 shadow-inner"
+                className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md mb-6 sm:mb-8 shadow-inner"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-bronze-400 animate-pulse"></span>
-                <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-white/80">
+                <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/80">
                   Quantitative Enterprise Strategy
                 </span>
               </motion.div>
@@ -38,7 +38,7 @@ const Hero = ({ onBookAppointment }) => {
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight leading-[0.95]"
+                className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 sm:mb-8 tracking-tight leading-[1.0] sm:leading-[0.95]"
               >
                 Transform Your Enterprise with
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-bronze-300 via-bronze-400 to-amber-200 font-normal italic mt-2 drop-shadow-[0_0_35px_rgba(192,160,98,0.25)]">
@@ -89,14 +89,14 @@ const Hero = ({ onBookAppointment }) => {
             >
               <div className="relative group rounded-2xl overflow-hidden cursor-default transition-all duration-500 hover:shadow-[0_25px_60px_-15px_rgba(192,160,98,0.3)] border-beam-container">
                 {/* 3D Glass Shell */}
-                <div className="bg-[#0C1017]/90 border border-white/15 backdrop-blur-2xl p-8 rounded-2xl relative overflow-hidden transition-all duration-300 group-hover:border-bronze-500/50">
+                <div className="bg-[#0C1017]/90 border border-white/15 backdrop-blur-2xl p-6 sm:p-8 rounded-2xl relative overflow-hidden transition-all duration-300 group-hover:border-bronze-500/50">
                   {/* Top Specular Rim */}
                   <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
 
                   {/* Ambient Light Cone */}
                   <div className="absolute -top-12 -right-12 w-36 h-36 bg-bronze-500/20 rounded-full blur-3xl pointer-events-none group-hover:bg-bronze-500/35 transition-all duration-500" />
 
-                  <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/10 relative z-10">
+                  <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 border-b border-white/10 relative z-10">
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-bronze-400"></span>
                       <span className="font-mono text-[10px] uppercase tracking-widest text-white/60">
@@ -108,7 +108,7 @@ const Hero = ({ onBookAppointment }) => {
                     </div>
                   </div>
 
-                  <div className="space-y-6 relative z-10">
+                  <div className="space-y-5 sm:space-y-6 relative z-10">
                     <div>
                       <div className="font-serif text-3xl md:text-4xl font-bold text-white tracking-tight drop-shadow-md">
                         $14.8B+
@@ -137,7 +137,7 @@ const Hero = ({ onBookAppointment }) => {
                     </div>
                   </div>
 
-                  <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between relative z-10">
+                  <div className="mt-6 sm:mt-8 pt-4 border-t border-white/10 flex items-center justify-between relative z-10">
                     <span className="font-mono text-[10px] uppercase tracking-widest text-white/40">
                       Audited Analytics
                     </span>
@@ -154,7 +154,7 @@ const Hero = ({ onBookAppointment }) => {
           </div>
 
           {/* Institutional Trust Coordinates */}
-          <div className="pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="pt-8 sm:pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             <div>
               <span className="block font-mono text-[10px] uppercase tracking-widest text-white/40 mb-1">
                 Headquarters

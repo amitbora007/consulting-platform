@@ -24,7 +24,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="min-h-screen flex flex-col justify-center py-24 md:py-32 px-6 md:px-12 lg:px-20 border-t border-white/10 relative overflow-hidden">
+    <section id="testimonials" className="min-h-screen flex flex-col justify-center py-20 md:py-32 px-5 sm:px-8 md:px-12 lg:px-20 border-t border-white/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
@@ -132,7 +132,7 @@ const Testimonials = () => {
 
       {/* Video Modal Dialog */}
       <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
-        <DialogContent className="max-w-4xl bg-[#0C1017]/95 border border-white/20 p-0 overflow-hidden rounded-2xl shadow-2xl backdrop-blur-2xl">
+        <DialogContent className="w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-3rem)] max-w-4xl bg-[#0C1017]/95 border border-white/20 p-0 overflow-hidden rounded-2xl shadow-2xl backdrop-blur-2xl">
           <DialogTitle className="sr-only">Executive Video Testimonial</DialogTitle>
           <DialogDescription className="sr-only">
             Watch briefing from {selectedVideo?.client_name}

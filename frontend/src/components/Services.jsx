@@ -38,14 +38,14 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="min-h-screen flex flex-col justify-center py-24 md:py-32 px-6 md:px-12 lg:px-20 border-t border-white/10 relative">
+    <section id="services" className="min-h-screen flex flex-col justify-center py-20 md:py-32 px-5 sm:px-8 md:px-12 lg:px-20 border-t border-white/10 relative">
       <div className="max-w-7xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8"
+          className="mb-12 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-8"
         >
           <div>
             <div className="flex items-center gap-2 mb-4">
@@ -63,7 +63,7 @@ const Services = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-8">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -73,7 +73,7 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                className="group relative bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-8 md:p-12 rounded-2xl shadow-2xl relative overflow-hidden flex flex-col justify-between transition-all duration-500 hover:border-bronze-500/50 hover:-translate-y-2 hover:shadow-[0_25px_50px_-15px_rgba(192,160,98,0.3)] border-beam-container"
+                className="group relative bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-6 sm:p-8 md:p-12 rounded-2xl shadow-2xl relative overflow-hidden flex flex-col justify-between transition-all duration-500 hover:border-bronze-500/50 hover:-translate-y-2 hover:shadow-[0_25px_50px_-15px_rgba(192,160,98,0.3)] border-beam-container"
                 data-testid={`service-card-${index}`}
               >
                 {/* Top specular highlight rim */}

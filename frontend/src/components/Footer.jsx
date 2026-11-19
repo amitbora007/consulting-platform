@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 
 const Footer = ({ onBookAppointment }) => {
   return (
-    <footer className="border-t border-white/10 bg-[#050505] py-20 px-6 md:px-12 lg:px-20">
+    <footer className="border-t border-white/10 bg-[#050505] py-14 sm:py-20 px-5 sm:px-8 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-12 mb-12 sm:mb-16">
           {/* Brand & Purpose */}
           <div className="md:col-span-5">
             <div className="flex items-center gap-3 mb-6">

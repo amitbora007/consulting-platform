@@ -44,14 +44,14 @@ const CaseStudies = () => {
   };
 
   return (
-    <section id="case-studies" className="min-h-screen flex flex-col justify-center py-24 md:py-32 px-6 md:px-12 lg:px-20 border-t border-white/10 relative overflow-hidden">
+    <section id="case-studies" className="min-h-screen flex flex-col justify-center py-20 md:py-32 px-5 sm:px-8 md:px-12 lg:px-20 border-t border-white/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8"
+          className="mb-12 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-8"
         >
           <div>
             <div className="flex items-center gap-2 mb-4">
@@ -74,7 +74,7 @@ const CaseStudies = () => {
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-16 text-center rounded-2xl shadow-xl max-w-2xl mx-auto"
+            className="bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-10 sm:p-16 text-center rounded-2xl shadow-xl max-w-2xl mx-auto"
           >
             <FileText className="w-10 h-10 text-white/20 mx-auto mb-4" strokeWidth={1} />
             <p className="text-white/50 font-sans font-light">
@@ -91,16 +91,16 @@ const CaseStudies = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
                 whileHover={{ y: -4 }}
-                className="group bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-8 md:p-10 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex flex-col lg:flex-row lg:items-center justify-between gap-8 relative overflow-hidden transition-all duration-500 hover:border-bronze-500/40 hover:shadow-[0_25px_50px_-15px_rgba(192,160,98,0.25)] border-beam-container"
+                className="group bg-[#0C1017]/85 backdrop-blur-2xl border border-white/10 p-5 sm:p-8 md:p-10 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-8 relative overflow-hidden transition-all duration-500 hover:border-bronze-500/40 hover:shadow-[0_25px_50px_-15px_rgba(192,160,98,0.25)] border-beam-container"
                 data-testid="case-study-item"
               >
                 {/* Top specular rim */}
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
 
-                <div className="flex items-start gap-6 flex-1 relative z-10">
+                <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 flex-1 relative z-10">
                   {/* 3D Elevated Icon Pedestal */}
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/15 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:border-bronze-500/50 group-hover:shadow-[0_0_20px_rgba(192,160,98,0.3)] transition-all duration-300">
-                    <FileText className="w-6 h-6 text-bronze-400 group-hover:text-bronze-300 transition-colors duration-200" strokeWidth={1.75} />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/15 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:border-bronze-500/50 group-hover:shadow-[0_0_20px_rgba(192,160,98,0.3)] transition-all duration-300">
+                    <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-bronze-400 group-hover:text-bronze-300 transition-colors duration-200" strokeWidth={1.75} />
                   </div>
 
                   <div className="flex-1">
