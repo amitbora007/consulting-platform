@@ -42,7 +42,7 @@ const Home = () => {
       <FloatingNavDock onBookAppointment={() => setShowAppointment(true)} />
 
       <Dialog open={showAppointment} onOpenChange={setShowAppointment}>
-        <DialogContent className="w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-3rem)] max-w-5xl bg-transparent border-0 p-0 max-h-[92vh] overflow-y-auto rounded-2xl shadow-2xl">
+        <DialogContent hideCloseButton className="w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-3rem)] max-w-5xl bg-transparent border-0 p-0 max-h-[calc(100dvh-2rem)] overflow-y-auto rounded-2xl shadow-2xl">
           <DialogTitle className="sr-only">Book Executive Consultation</DialogTitle>
           <DialogDescription className="sr-only">
             Select a session date, preferred time window, and provide corporate credentials to schedule a consultation.

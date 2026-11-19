@@ -150,7 +150,7 @@ const BlogPreviews = () => {
           <DialogDescription className="sr-only">Executive perspective article</DialogDescription>
           {activeArticle && (
             <div>
-              <div className="flex items-center gap-3 mb-4 font-mono text-xs uppercase tracking-widest">
+              <div className="flex flex-wrap items-center gap-3 mb-4 font-mono text-xs uppercase tracking-widest pr-10 sm:pr-0">
                 <span className="text-black bg-bronze-500 px-2.5 py-0.5 font-bold">
                   {activeArticle.category}
                 </span>

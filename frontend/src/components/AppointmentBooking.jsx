@@ -86,7 +86,7 @@ const AppointmentBooking = ({ onClose }) => {
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none z-20" />
 
       {/* Top Header Bar */}
-      <div className="flex items-center justify-between px-3.5 sm:px-6 md:px-8 py-3 sm:py-4 border-b border-white/10 bg-[#090D14]/90 relative z-10 gap-2">
+      <div className="flex items-center justify-between px-3.5 sm:px-6 md:px-8 py-3 sm:py-3.5 border-b border-white/10 bg-[#090D14]/95 relative z-10 gap-3">
         <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
           <div className="w-6 h-6 rounded-md bg-bronze-500/20 border border-bronze-500/30 flex items-center justify-center flex-shrink-0">
             <Shield className="w-3.5 h-3.5 text-bronze-400" strokeWidth={1.75} />
@@ -101,33 +101,44 @@ const AppointmentBooking = ({ onClose }) => {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 flex-shrink-0">
-          {/* Mobile/Tablet Step Pills */}
-          <div className="flex lg:hidden items-center gap-1 bg-white/5 border border-white/10 p-0.5 rounded-lg">
-            <button
-              type="button"
-              onClick={() => setMobileStep(1)}
-              className={`px-2 py-1 text-[9px] sm:text-[10px] font-mono uppercase tracking-wider rounded-md transition-all ${
-                mobileStep === 1
-                  ? "bg-bronze-400 text-black font-bold shadow-sm"
-                  : "text-white/60 hover:text-white"
-              }`}
-            >
-              01 Date
-            </button>
-            <button
-              type="button"
-              onClick={() => setMobileStep(2)}
-              className={`px-2 py-1 text-[9px] sm:text-[10px] font-mono uppercase tracking-wider rounded-md transition-all ${
-                mobileStep === 2
-                  ? "bg-bronze-400 text-black font-bold shadow-sm"
-                  : "text-white/60 hover:text-white"
-              }`}
-            >
-              02 Details
-            </button>
-          </div>
-        </div>
+        {/* Dedicated Close Button */}
+        <button
+          type="button"
+          onClick={onClose}
+          className="min-h-[44px] min-w-[44px] w-9 h-9 rounded-lg bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 flex items-center justify-center text-white/60 hover:text-white transition-all duration-200 flex-shrink-0 cursor-pointer focus:outline-none focus:ring-1 focus:ring-bronze-400"
+          data-testid="close-appointment-dialog"
+          aria-label="Close consultation modal"
+        >
+          <X className="w-4 h-4" />
+        </button>
+      </div>
+
+      {/* Mobile/Tablet Step Segmented Control (Dedicated Bar) */}
+      <div className="lg:hidden px-3.5 sm:px-6 py-2.5 bg-[#070A10]/95 border-b border-white/10 flex items-center gap-2 relative z-10">
+        <button
+          type="button"
+          onClick={() => setMobileStep(1)}
+          className={`flex-1 min-h-[44px] py-2 px-3 rounded-lg text-xs font-mono uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer ${
+            mobileStep === 1
+              ? "bg-gradient-to-r from-[#DFC285] via-[#D4B26F] to-[#C0A062] text-[#06080E] font-bold shadow-md shadow-bronze-500/10"
+              : "bg-white/[0.04] text-white/60 hover:text-white border border-white/10"
+          }`}
+        >
+          <span className={`w-1.5 h-1.5 rounded-full ${mobileStep === 1 ? "bg-[#06080E]" : "bg-white/40"}`} />
+          <span>01 Date & Time</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setMobileStep(2)}
+          className={`flex-1 min-h-[44px] py-2 px-3 rounded-lg text-xs font-mono uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer ${
+            mobileStep === 2
+              ? "bg-gradient-to-r from-[#DFC285] via-[#D4B26F] to-[#C0A062] text-[#06080E] font-bold shadow-md shadow-bronze-500/10"
+              : "bg-white/[0.04] text-white/60 hover:text-white border border-white/10"
+          }`}
+        >
+          <span className={`w-1.5 h-1.5 rounded-full ${mobileStep === 2 ? "bg-[#06080E]" : "bg-white/40"}`} />
+          <span>02 Credentials</span>
+        </button>
       </div>
 
       {/* Main Grid: Adaptive Split Layout */}
