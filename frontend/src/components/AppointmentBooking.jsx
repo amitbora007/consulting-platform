@@ -126,20 +126,11 @@ const AppointmentBooking = ({ onClose }) => {
             02 Details
           </button>
         </div>
-
-        <button
-          onClick={onClose}
-          className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white/50 hover:text-white transition-all duration-200"
-          data-testid="close-appointment-dialog"
-          aria-label="Close dialog"
-        >
-          <X className="w-4 h-4" strokeWidth={1.75} />
-        </button>
       </div>
 
       {/* Main Grid: Adaptive Split Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 relative z-10 divide-y lg:divide-y-0 lg:divide-x divide-white/10">
-        
+
         {/* Left Column: Calendar & Time Selection (always visible on desktop, step 1 on mobile) */}
         <div className={`lg:col-span-6 p-5 sm:p-6 md:p-8 bg-[#070A10]/90 ${mobileStep === 1 ? "block" : "hidden lg:block"}`}>
           <div className="mb-5">

@@ -188,7 +188,7 @@ const TestimonialsManager = ({ onUpdate }) => {
             disabled={uploading}
             className="w-full sm:w-auto bg-white text-black hover:bg-gray-200 rounded-none h-12 px-8 uppercase tracking-widest text-xs font-bold transition-colors duration-300"
           >
-            {uploading ? "Uploading Video Asset..." : "Commit Video Testimonial"}
+            {uploading ? "Uploading Video Asset..." : "Upload Video Testimonial"}
           </Button>
         </form>
       </div>

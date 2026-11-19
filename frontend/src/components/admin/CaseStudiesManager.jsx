@@ -185,7 +185,7 @@ const CaseStudiesManager = ({ onUpdate }) => {
             disabled={uploading}
             className="w-full sm:w-auto bg-white text-black hover:bg-gray-200 rounded-none h-12 px-8 uppercase tracking-widest text-xs font-bold transition-colors duration-300"
           >
-            {uploading ? "Publishing Dossier..." : "Commit Case Study Dossier"}
+            {uploading ? "Publishing Dossier..." : "Upload Case Study"}
           </Button>
         </form>
       </div>

@@ -56,6 +56,13 @@ A professional full-stack consulting service platform with a premium dark visual
 ```text
 corporate-consulting-platform/
 ├── backend/
+│   ├── app/
+│   │   ├── config.py
+│   │   ├── database.py
+│   │   ├── main.py
+│   │   ├── models/
+│   │   ├── controllers/
+│   │   └── routes/
 │   ├── server.py
 │   ├── requirements.txt
 │   ├── .env.example
